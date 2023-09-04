@@ -24,7 +24,7 @@ indigenous = {"HUTT_CIVILIAN", "IMPERIAL_ELITE_GUARD", "TWILEK_FEMALE", "SAND_PE
               "JAWA_SCOUT", "WOOKIE_WARRIOR", "WOOKIE_WARRIOR_UNARMED", "EWOK_HUNTER", "CIVILIAN_INDEPENDENT_AI",
               "GUNGAN_WARRIOR", "DUST_DEVIL", "DESERT_SKETTO", "RANCOR", "WAMPA", "DATHOMIR_NIGHT_SISTER",
               "PYNGANI_WARRIOR", "GEONOSIAN", "IMPERIAL_GUARD_SPAWNER", "SULLUST_CAVE_COMPLEX_ENTRY",
-              "JAWA_SANDCRAWLER", "WOOKIEE_HOUSE", "SANDPEOPLE_DWELLING"}
+              "JAWA_SANDCRAWLER", "WOOKIEE_HOUSE", "SANDPEOPLE_DWELLING", "VORNSKR_WOLF_INDIG", "PIRATE_GROUND_BASE_1"}
 
 function Is_Indigenous(unit)
     local type_name = unit.Get_Type().Get_Name()
@@ -47,12 +47,34 @@ function Spawn_Units(player)
         Add_Unit("Z95_Headhunter_Squadron", player)
         Add_Unit("VWing_Squadron_P", player)
         Add_Unit("Pirate_Fighter_Squadron", player)
+        Add_Unit("Merchant_Freighter", player)
+        Add_Unit("Merchant_Freighter", player)
+        if GameRandom.Get_Float() < 0.1 then
+            Add_Objective("Our sensors have detected presense of a medium-size pirate fleet in the system!", false)
+            Add_Unit("IPV1_System_Patrol_Craft", player)
+            Add_Unit("IPV1_System_Patrol_Craft", player)
+            Add_Unit("Pirate_Frigate", player)
+            Add_Unit("Pirate_Frigate", player)
+            Add_Unit("Jedi_Cruiser", player)
+        end
+        -- eastern egg
+        if GameRandom.Get_Float() < 0.01 then
+            Add_Unit("Death_Star", player)
+        end
     else
         Add_Unit("Mandalorian_Indigenous_Company", player)
         Add_Unit("Noghri_Indigenous_Company", player)
         Add_Unit("Kashyyyk_Wookie_War_Party", player)
         Add_Unit("Sandpeople_War_Party", player)
-        Add_Unit("Endor_Ewok_Hunting_Party", player)
+        if GameRandom.Get_Float() < 0.25 then
+            Add_Objective("We have reports of mandalorians who were hired to fight against us!", false)
+            Add_Unit("Mandalorian_Indigenous_Company", player)
+            Add_Unit("Mandalorian_Indigenous_Company", player)
+            Add_Unit("Mandalorian_Indigenous_Company", player)
+            Add_Unit("Mandalorian_Indigenous_Company", player)
+            Add_Unit("Mandalorian_Indigenous_Company", player)
+            Add_Unit("Mandalorian_Indigenous_Company", player)
+        end
     end
 end
 
